@@ -1,26 +1,173 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-inter);
+  --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-ivory: var(--ivory);
+  --color-charcoal: var(--charcoal);
+  --color-muted-gray: var(--muted-gray);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.375rem;
+  --radius-xl: 0.5rem;
+  --radius-2xl: 0.75rem;
+  --radius-3xl: 1rem;
+  --radius-4xl: 1.25rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --forest: #0b5e3a;
+  --forest-deep: #06452b;
+  --gold: #d4a017;
+  --gold-light: #e5c76b;
+  --ivory: #f7f8f5;
+  --charcoal: #1a1a1a;
+  --muted-gray: #6b7280;
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #0b5e3a;
+  --primary-foreground: #ffffff;
+  --secondary: #f7f8f5;
+  --secondary-foreground: #06452b;
+  --muted: #f7f8f5;
+  --muted-foreground: #6b7280;
+  --accent: #f4efe0;
+  --accent-foreground: #06452b;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #e4e7e0;
+  --input: #d9ddd4;
+  --ring: #0b5e3a;
+  --chart-1: #0b5e3a;
+  --chart-2: #d4a017;
+  --chart-3: #06452b;
+  --chart-4: #e5c76b;
+  --chart-5: #1a1a1a;
+  --radius: 0.25rem;
+  --sidebar: #f7f8f5;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-primary: #0b5e3a;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f4efe0;
+  --sidebar-accent-foreground: #06452b;
+  --sidebar-border: #e4e7e0;
+  --sidebar-ring: #0b5e3a;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    line-height: 1.7;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    font-weight: 650;
+    color: var(--charcoal);
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--gold) 35%, white);
+    color: var(--forest-deep);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--forest);
+    outline-offset: 3px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .pattern-geo {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .gold-rule {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--gold) 20%,
+      var(--gold-light) 50%,
+      var(--gold) 80%,
+      transparent
+    );
+  }
+
+  .placeholder-note {
+    @apply border border-dashed border-gold/50 bg-accent/60 px-3 py-2 text-sm text-muted-foreground italic;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
