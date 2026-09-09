@@ -23,6 +23,7 @@ export const navItems = [
   { href: "/", label: "Home" },
   { href: "/plans/golden-endowment", label: "Golden Endowment" },
   { href: "/about", label: "About" },
+  { href: "/recruitment", label: "Careers" },
   { href: "/contact", label: "Contact" },
 ] as const;
 

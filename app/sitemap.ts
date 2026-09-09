@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/plans/jeevan-sathi",
     "/plans/child-education-marriage",
     "/about",
+    "/recruitment",
     "/contact",
   ];
   return routes.map((route) => ({
