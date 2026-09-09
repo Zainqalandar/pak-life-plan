@@ -1,7 +1,12 @@
 import Link from "next/link";
 import { StateLifeLogo } from "@/components/layout/StateLifeLogo";
 import { Container } from "@/components/shared/Container";
-import { contactPlaceholders, navItems, officialWebsites } from "@/lib/site";
+import {
+  additionalPlanNavItems,
+  contactPlaceholders,
+  navItems,
+  officialWebsites,
+} from "@/lib/site";
 
 export function Footer() {
   return (
@@ -50,6 +55,13 @@ export function Footer() {
           </h2>
           <ul className="mt-4 space-y-3 text-sm text-white/80">
             {navItems.map((item) => (
+              <li key={item.href}>
+                <Link className="hover:text-white" href={item.href}>
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+            {additionalPlanNavItems.map((item) => (
               <li key={item.href}>
                 <Link className="hover:text-white" href={item.href}>
                   {item.label}

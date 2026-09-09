@@ -26,5 +26,14 @@ export const navItems = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
+export const additionalPlanNavItems = [
+  { href: "/plans/platinum-plus", label: "Platinum Plus" },
+  { href: "/plans/jeevan-sathi", label: "Jeevan Sathi" },
+  {
+    href: "/plans/child-education-marriage",
+    label: "Child Education & Marriage",
+  },
+] as const;
+
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";

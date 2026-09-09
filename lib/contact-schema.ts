@@ -2,6 +2,9 @@ import { z } from "zod";
 
 export const inquiryTypeValues = [
   "golden-endowment",
+  "platinum-plus",
+  "jeevan-sathi",
+  "child-education-marriage",
   "general",
   "policy",
   "other",

@@ -3,10 +3,10 @@
 import { useEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { StateLifeLogo } from "@/components/layout/StateLifeLogo";
 import { CtaButton } from "@/components/shared/CtaButton";
-import { navItems } from "@/lib/site";
+import { additionalPlanNavItems, navItems } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 function subscribeScroll(onStoreChange: () => void) {
@@ -21,6 +21,7 @@ function getScrolledSnapshot() {
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [plansOpen, setPlansOpen] = useState(false);
   const scrolled = useSyncExternalStore(
     subscribeScroll,
     getScrolledSnapshot,
@@ -73,6 +74,36 @@ export function Navbar() {
               </Link>
             );
           })}
+          <div className="relative">
+            <button
+              type="button"
+              className={cn(
+                "inline-flex items-center gap-1 py-2 text-sm font-medium transition-colors",
+                plansOpen || additionalPlanNavItems.some((item) => pathname.startsWith(item.href))
+                  ? "text-forest"
+                  : "text-muted-gray hover:text-forest"
+              )}
+              aria-expanded={plansOpen}
+              onClick={() => setPlansOpen((value) => !value)}
+            >
+              More Plans
+              <ChevronDown className={cn("size-4 transition-transform", plansOpen && "rotate-180")} />
+            </button>
+            {plansOpen ? (
+              <div className="absolute top-full right-0 mt-2 w-64 border border-border bg-white p-2 shadow-lg">
+                {additionalPlanNavItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="block px-3 py-3 text-sm font-medium text-charcoal transition-colors hover:bg-ivory hover:text-forest"
+                    onClick={() => setPlansOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            ) : null}
+          </div>
         </nav>
         <div className="hidden lg:block">
           <CtaButton href="/contact" className="min-h-11 px-5">
@@ -116,6 +147,28 @@ export function Navbar() {
                 </Link>
               );
             })}
+            <div className="mt-3 border-t border-border pt-3">
+              <p className="px-3 pb-2 text-xs font-semibold tracking-[0.18em] uppercase text-gold">
+                More Plans
+              </p>
+              {additionalPlanNavItems.map((item) => {
+                const active = pathname.startsWith(item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={cn(
+                      "block min-h-12 px-3 py-3 text-base font-medium",
+                      active ? "bg-ivory text-forest" : "text-charcoal"
+                    )}
+                    aria-current={active ? "page" : undefined}
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </div>
           </nav>
           <div className="mt-4" onClick={() => setOpen(false)}>
             <CtaButton href="/contact" className="w-full">

@@ -281,8 +281,323 @@ export const faqs = [
   },
 ] as const;
 
+export type ProductPlan = {
+  slug: string;
+  title: string;
+  eyebrow: string;
+  tagline: string;
+  intro: string;
+  sellingPoint?: string;
+  stats: readonly { value: string; label: string }[];
+  whyChoose: readonly string[];
+  features: readonly { title: string; description: string }[];
+  benefits: readonly {
+    title: string;
+    description: string;
+    tone: "light" | "dark";
+  }[];
+  eligibility: readonly { label: string; value: string }[];
+  conditions: readonly string[];
+  faqs: readonly { question: string; answer: string }[];
+  card: { lineOne: string; lineTwo: string };
+};
+
+export const productPlans: readonly ProductPlan[] = [
+  {
+    slug: "platinum-plus",
+    title: "Platinum Plus",
+    eyebrow: "Savings and protection",
+    tagline: "Pay for 3 years. Stay covered for 10 years.",
+    intro:
+      "Platinum Plus is a conventional with-profits endowment plan designed to provide insurance coverage for ten years while premiums are payable for three years.",
+    sellingPoint: "Pay premiums for 3 years and receive coverage for 10 years.",
+    stats: [
+      { value: "10", label: "Years of coverage" },
+      { value: "3", label: "Premium payment years" },
+      { value: "With-profits", label: "Endowment plan" },
+    ],
+    whyChoose: [
+      "A shorter premium payment period with a longer stated coverage period.",
+      "A conventional endowment structure that combines savings and life protection.",
+      "A maturity benefit based on the Basic Sum Assured plus accrued bonuses, subject to applicable policy terms.",
+    ],
+    features: [
+      {
+        title: "Conventional with-profits structure",
+        description:
+          "The plan is described as a conventional with-profits endowment plan. Bonus treatment remains subject to the applicable policy terms.",
+      },
+      {
+        title: "Three-year premium payment",
+        description:
+          "Premiums are payable for 3 years as stated in the supplied plan brief.",
+      },
+      {
+        title: "Ten-year coverage",
+        description:
+          "The insurance/coverage term is 10 years as stated in the supplied plan brief.",
+      },
+      {
+        title: "Savings with protection",
+        description:
+          "The endowment structure is intended to bring savings and insurance protection together, subject to policy terms.",
+      },
+    ],
+    benefits: [
+      {
+        title: "Maturity benefit",
+        description:
+          "Basic Sum Assured plus accrued bonuses, payable subject to the applicable policy terms.",
+        tone: "light",
+      },
+      {
+        title: "Protection benefit",
+        description:
+          "Insurance protection is provided during the policy term according to the applicable policy terms. Exact death benefit wording should be confirmed from the policy document.",
+        tone: "dark",
+      },
+    ],
+    eligibility: [
+      { label: "Coverage term", value: "10 years" },
+      { label: "Premium payment term", value: "3 years" },
+      {
+        label: "Age and other eligibility details",
+        value: "Subject to applicable policy terms",
+      },
+    ],
+    conditions: [
+      "Exact premium amount, payment mode, entry age, bonus treatment, and underwriting requirements were not provided in the supplied brief.",
+      "Benefits are subject to the policy contract and applicable policy terms.",
+      "Confirm the official policy document and current terms with State Life before making a decision.",
+    ],
+    faqs: [
+      {
+        question: "What is the main feature of Platinum Plus?",
+        answer:
+          "The supplied brief states that premiums are payable for 3 years while insurance coverage continues for 10 years, subject to applicable policy terms.",
+      },
+      {
+        question: "What is the maturity benefit?",
+        answer:
+          "The maturity benefit is described as the Basic Sum Assured plus accrued bonuses, subject to applicable policy terms.",
+      },
+      {
+        question: "Are premium amounts or bonus rates available here?",
+        answer:
+          "No. Premium amounts and bonus rates were not supplied and should be confirmed from the official policy documentation.",
+      },
+    ],
+    card: {
+      lineOne: "10 Years Coverage",
+      lineTwo: "3 Years Premium Payment",
+    },
+  },
+  {
+    slug: "jeevan-sathi",
+    title: "Jeevan Sathi",
+    eyebrow: "Joint-life protection",
+    tagline: "Plan for two lives. Build financial security together.",
+    intro:
+      "Jeevan Sathi is a joint-life insurance plan for a husband and wife or two lives, bringing protection and long-term savings into one shared financial plan.",
+    stats: [
+      { value: "2", label: "Lives covered" },
+      { value: "Joint", label: "Life protection" },
+      { value: "Long-term", label: "Savings focus" },
+    ],
+    whyChoose: [
+      "Joint-life protection designed for a husband and wife or two lives.",
+      "A shared approach to long-term savings and financial security.",
+      "Maturity and death benefits are presented according to the applicable policy terms.",
+    ],
+    features: [
+      {
+        title: "Joint-life cover",
+        description:
+          "The plan is structured around the protection of two lives under one joint-life arrangement.",
+      },
+      {
+        title: "Financial security for both lives",
+        description:
+          "It is intended to support financial security for the covered lives and their shared financial responsibilities.",
+      },
+      {
+        title: "Long-term savings",
+        description:
+          "The plan combines a long-term savings objective with life insurance protection, subject to policy terms.",
+      },
+      {
+        title: "Shared financial planning",
+        description:
+          "A joint structure can help couples or two covered lives plan around common future needs.",
+      },
+    ],
+    benefits: [
+      {
+        title: "Maturity benefit",
+        description:
+          "A maturity benefit may be available under the plan, with the amount and payment conditions determined by the applicable policy terms.",
+        tone: "light",
+      },
+      {
+        title: "Death benefit",
+        description:
+          "Death benefit is payable according to the applicable policy terms. The exact trigger, amount, and sequence of payment should be confirmed in the policy document.",
+        tone: "dark",
+      },
+    ],
+    eligibility: [
+      { label: "Lives covered", value: "Two lives" },
+      { label: "Suitable for", value: "Husband and wife or two lives" },
+      {
+        label: "Available policy terms",
+        value: "To be confirmed under applicable policy terms",
+      },
+    ],
+    conditions: [
+      "The supplied brief does not specify policy term options, premium amounts, entry ages, bonus rates, or payment schedules.",
+      "Death and maturity benefits are subject to the applicable policy terms.",
+      "Confirm how joint-life claims and benefit payment are handled in the official policy document.",
+    ],
+    faqs: [
+      {
+        question: "Who is Jeevan Sathi designed for?",
+        answer:
+          "It is a joint-life insurance plan designed for a husband and wife or two lives.",
+      },
+      {
+        question: "What does the plan combine?",
+        answer:
+          "The supplied brief describes joint-life protection, financial security for both lives, long-term savings, and maturity benefits.",
+      },
+      {
+        question: "What policy terms are available?",
+        answer:
+          "Specific policy term options were not supplied in the brief. They should be confirmed under the applicable policy terms.",
+      },
+    ],
+    card: {
+      lineOne: "Joint Life Protection",
+      lineTwo: "Savings + Protection",
+    },
+  },
+  {
+    slug: "child-education-marriage",
+    title: "Child Education & Marriage Plan",
+    eyebrow: "Planning for a child’s future",
+    tagline: "Prepare today for education, marriage, and tomorrow’s security.",
+    intro:
+      "The Child Education & Marriage Plan is designed to help families plan financially for a child’s education, marriage, and future financial security.",
+    stats: [
+      { value: "1–15", label: "Child entry age" },
+      { value: "20–60", label: "Payer age" },
+      { value: "10–24", label: "Policy term" },
+    ],
+    whyChoose: [
+      "Built around major future milestones: education and marriage planning.",
+      "A policy term can be structured around the child reaching age 18, 21, or 25 years.",
+      "Maturity may be received as a lump sum or 5 equal annual installments, subject to applicable policy terms.",
+    ],
+    features: [
+      {
+        title: "Child-focused planning",
+        description:
+          "The plan is designed around building financial support for a child’s future education and marriage needs.",
+      },
+      {
+        title: "Flexible milestone timing",
+        description:
+          "The benefit can be structured around the child reaching age 18, 21, or 25 years.",
+      },
+      {
+        title: "Future financial security",
+        description:
+          "It provides a structured way to plan for important future financial responsibilities for the child.",
+      },
+      {
+        title: "Premium waiver protection",
+        description:
+          "After the policyholder’s death, future premiums may be waived, subject to applicable policy terms.",
+      },
+    ],
+    benefits: [
+      {
+        title: "Maturity benefit",
+        description:
+          "Sum Assured plus accrued bonuses. The maturity benefit may be available as a lump sum or 5 equal annual installments, subject to applicable policy terms.",
+        tone: "light",
+      },
+      {
+        title: "Protection for the plan",
+        description:
+          "Future premiums may be waived after the policyholder’s death, allowing the plan to continue for the child, subject to applicable policy terms.",
+        tone: "dark",
+      },
+    ],
+    eligibility: [
+      { label: "Child entry age", value: "1–15 years" },
+      { label: "Policyholder / payer age", value: "20–60 years" },
+      { label: "Policy term", value: "10–24 years" },
+      {
+        label: "Benefit milestone",
+        value: "Child’s age 18, 21, or 25 years",
+      },
+    ],
+    conditions: [
+      "Maturity may be paid as a lump sum or 5 equal annual installments, subject to applicable policy terms.",
+      "Future premium waiver after the policyholder’s death is subject to applicable policy terms.",
+      "Premium amounts, bonus rates, underwriting, and other contractual conditions should be confirmed from the official policy document.",
+    ],
+    faqs: [
+      {
+        question: "What is the child’s entry age?",
+        answer: "The child entry age stated in the brief is 1–15 years.",
+      },
+      {
+        question: "What age can the policy be planned around?",
+        answer:
+          "The benefit can be structured around the child reaching age 18, 21, or 25 years, subject to applicable policy terms.",
+      },
+      {
+        question: "How can the maturity benefit be paid?",
+        answer:
+          "The maturity benefit may be available as a lump sum or 5 equal annual installments, subject to applicable policy terms.",
+      },
+      {
+        question: "What happens if the policyholder dies?",
+        answer:
+          "Future premiums may be waived after the policyholder’s death, subject to applicable policy terms.",
+      },
+    ],
+    card: {
+      lineOne: "Education + Marriage Planning",
+      lineTwo: "Future Financial Security",
+    },
+  },
+] as const;
+
+export const productCards = [
+  {
+    slug: "golden-endowment",
+    title: "Golden Endowment",
+    lineOne: "20 Years Coverage",
+    lineTwo: "7 Years Premium Payment",
+  },
+  ...productPlans.map(({ slug, title, card }) => ({
+    slug,
+    title,
+    lineOne: card.lineOne,
+    lineTwo: card.lineTwo,
+  })),
+] as const;
+
 export const inquiryTypes = [
   { value: "golden-endowment", label: "Golden Endowment" },
+  { value: "platinum-plus", label: "Platinum Plus" },
+  { value: "jeevan-sathi", label: "Jeevan Sathi" },
+  {
+    value: "child-education-marriage",
+    label: "Child Education & Marriage Plan",
+  },
   { value: "general", label: "General Information" },
   { value: "policy", label: "Policy Question" },
   { value: "other", label: "Other" },
